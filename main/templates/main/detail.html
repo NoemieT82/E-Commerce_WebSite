@@ -1,0 +1,25 @@
+{% extends '../bootstrap/index.html' %}
+
+{% block content %}
+
+
+            <div class="col mb-5">
+                <div class="card h-90">
+                    <!-- Product image-->
+                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 400px"/>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{ product.title }}</h5>
+                            <!-- Product price-->
+                            {{ product.price }}€
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-5">
+                    <b>Description :</b><br>
+                    {{ product.description }}
+            </div>
+{% endblock %}
