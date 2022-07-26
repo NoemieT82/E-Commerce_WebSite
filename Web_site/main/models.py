@@ -16,6 +16,12 @@ class Product(models.Model):
    
     # Quantité
     stock = models.IntegerField(default=0)
+
+    #Matière
+    matiere = models.CharField(max_length=200, blank=True, null=True)
+    
+    #Taillle
+    taille = models.CharField(max_length=200, blank=True, null=True)
     
     # Image
     image = models.ImageField(upload_to="products", blank=True, null=True)

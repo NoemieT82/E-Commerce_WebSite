@@ -4,9 +4,9 @@
 
 
             <div class="col mb-5">
-                <div class="card h-90">
+                <div class="card h-10">
                     <!-- Product image-->
-                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 400px"/>
+                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%"/>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
@@ -19,7 +19,17 @@
                 </div>
             </div>
             <div class="col mb-5">
-                    <b>Description :</b><br>
+                <div class="row mb-3">
+                    <b>Description :</b>
                     {{ product.description }}
+                </div>
+                <div class="row mb-3">
+                    <b>Matière :</b>
+                    {{ product.matiere }}
+                </div>
+                <div class="row mb-3">
+                    <b>Diamètre :</b>
+                    {{ product.taille }}
+                </div>
             </div>
 {% endblock %}
