@@ -6,16 +6,16 @@ from django import forms
 
 class Product(models.Model):
     # Titre
-    title = models.CharField(max_length=100)
+    titre = models.CharField(max_length=100)
 
     # Description
-    description = models.TextField(max_length=2000, blank=True)
+    description = models.TextField(max_length=2000)
     
     # Prix
-    price =  models.DecimalField(default=0.00,max_digits=5, decimal_places=2)
+    prix =  models.DecimalField(default=00.00,max_digits=5, decimal_places=2)
    
     # Quantité
-    stock = models.IntegerField(default=0)
+    stock = models.IntegerField(default=0, blank=True, null=True)
 
     #Matière
     matiere = models.CharField(max_length=200, blank=True, null=True)
@@ -27,7 +27,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to="products", blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return self.titre
 
 class Contact(models.Model):
     # Email

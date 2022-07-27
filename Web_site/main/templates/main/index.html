@@ -2,28 +2,59 @@
 
 {% block content %}
 
+{% if add_product == True %}
+    <div class="col text-center mb-4">
+        <a class="btn btn-outline-dark" href="/add_product/">
+            Ajouter un produit
+        </a>
+    </div>
+{% endif%}
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 {% for product in products %}
+    <div class="col mb-5">
+        <div class="card h-100">
+            <!-- Product image-->
+            {% if product.image %}
+            <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 25"/>
+            {% endif %}
+            <!-- Product details-->
+            <div class="card-body p-2">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">{{ product.titre }}</h5>
+                    <!-- Product price-->
+                    {{ product.prix }}€
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
+                <div class="text-center">
+                    <a class="btn btn-sm btn-outline-dark mt-auto" href="detail/{{ product.id }}">Détails</a>
+                    {% if delete_product == True %}
+                    <button class="btn btn-sm btn-outline-dark mt-auto" data-toggle="modal" data-target="#modal{{ product.id }}">Supprimer</button>
 
-<div class="col mb-5">
-    <div class="card h-100">
-        <!-- Product image-->
-        <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 25  0px"/>
-        <!-- Product details-->
-        <div class="card-body p-4">
-            <div class="text-center">
-                <!-- Product name-->
-                <h5 class="fw-bolder">{{ product.title }}</h5>
-                <!-- Product price-->
-                {{ product.price }}€
+                    <div class="modal fade" id="modal{{ product.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Suppression</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Êtes-vous sûr de vouloir supprimer ce produit ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                    <a class="btn btn-danger text-white mt-auto" href="supprimer/{{ product.id }}">Valider</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endif%}
+                </div>
             </div>
         </div>
-        <!-- Product actions-->
-        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail/{{ product.id }}">Voir les détails du produit</a></div>
-        </div>
     </div>
-</div>
-
 {% endfor %}
-
+</div>
 {% endblock %}

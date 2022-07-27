@@ -1,35 +1,44 @@
 {% extends '../bootstrap/index.html' %}
 
 {% block content %}
-
-
-            <div class="col mb-5">
-                <div class="card h-10">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%"/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">{{ product.title }}</h5>
-                            <!-- Product price-->
-                            {{ product.price }}€
-                        </div>
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="col mb-5">
+            <div class="card h-10">
+                <!-- Product image-->
+                {% if product.image %}
+                <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.titre }}" style="width: 100%"/>
+                {% endif %}
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder">{{ product.titre }}</h5>
+                        <!-- Product price-->
+                        {{ product.prix }}€
                     </div>
                 </div>
             </div>
-            <div class="col mb-5">
-                <div class="row mb-3">
-                    <b>Description :</b>
-                    {{ product.description }}
-                </div>
-                <div class="row mb-3">
-                    <b>Matière :</b>
-                    {{ product.matiere }}
-                </div>
-                <div class="row mb-3">
-                    <b>Diamètre :</b>
-                    {{ product.taille }}
-                </div>
+        </div>
+        <div class="col mb-5">
+            <div class="row mb-3">
+                <b>Description :</b>
+                {{ product.description }}
             </div>
+            <div class="row mb-3">
+                <b>Matière :</b>
+                {{ product.matiere }}
+            </div>
+            <div class="row mb-3">
+                <b>Diamètre :</b>
+                {{ product.taille }}
+            </div>
+        </div>
+    </div>
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="col p-2">
+            <a class="btn btn-outline-dark" href="/">
+                Retour
+            </a>
+        </div>
+    </div>
 {% endblock %}
